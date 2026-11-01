@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-ucb-transporte-us-12713688"
+		},
+		"ls_dl_transporte_accountKey": {
+			"value": ""
+		},
+		"ls_sql_transporte_password": {
+			"value": ""
+		},
+		"ls_dl_transporte_properties_typeProperties_url": {
+			"value": "https://saucbtransporte92841736.dfs.core.windows.net/"
+		},
+		"ls_sql_transporte_properties_typeProperties_server": {
+			"value": "sql-ucb-server-transporte-92841736.database.windows.net"
+		},
+		"ls_sql_transporte_properties_typeProperties_database": {
+			"value": "erp_transporte_db"
+		},
+		"ls_sql_transporte_properties_typeProperties_userName": {
+			"value": "juansoliz"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
