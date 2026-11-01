@@ -246,7 +246,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_bronze_viajes_csv')]",
+			"name": "[concat(parameters('factoryName'), '/ds_bronze_rutas_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -262,7 +262,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "viajes.csv",
+						"fileName": "rutas.csv",
 						"folderPath": "datos_csv",
 						"fileSystem": "raw"
 					},
@@ -311,7 +311,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_bronze_viajes_csv_copy1')]",
+			"name": "[concat(parameters('factoryName'), '/ds_bronze_viajes_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
