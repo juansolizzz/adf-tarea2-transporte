@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"password\"de \"ls_sql_transporte\""
 		},
+		"ls_dw_transporte_password": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"password\"de \"ls_dw_transporte\""
+		},
 		"ls_dl_transporte_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://saucbtransporte92841736.dfs.core.windows.net/"
@@ -28,6 +32,18 @@
 			"defaultValue": "erp_transporte_db"
 		},
 		"ls_sql_transporte_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "juansoliz"
+		},
+		"ls_dw_transporte_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-ucb-server-transporte-92841736.database.windows.net"
+		},
+		"ls_dw_transporte_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dw_transporte"
+		},
+		"ls_dw_transporte_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "juansoliz"
 		},
@@ -64,6 +80,9 @@
 					"ls_sql_transporte_password": {
 						"value": "[parameters('ls_sql_transporte_password')]"
 					},
+					"ls_dw_transporte_password": {
+						"value": "[parameters('ls_dw_transporte_password')]"
+					},
 					"ls_dl_transporte_properties_typeProperties_url": {
 						"value": "[parameters('ls_dl_transporte_properties_typeProperties_url')]"
 					},
@@ -75,6 +94,15 @@
 					},
 					"ls_sql_transporte_properties_typeProperties_userName": {
 						"value": "[parameters('ls_sql_transporte_properties_typeProperties_userName')]"
+					},
+					"ls_dw_transporte_properties_typeProperties_server": {
+						"value": "[parameters('ls_dw_transporte_properties_typeProperties_server')]"
+					},
+					"ls_dw_transporte_properties_typeProperties_database": {
+						"value": "[parameters('ls_dw_transporte_properties_typeProperties_database')]"
+					},
+					"ls_dw_transporte_properties_typeProperties_userName": {
+						"value": "[parameters('ls_dw_transporte_properties_typeProperties_userName')]"
 					}
 				}
 			},
