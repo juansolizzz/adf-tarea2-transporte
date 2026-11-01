@@ -5,6 +5,9 @@
 			"referenceName": "ls_dl_transporte",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "bronze/csv"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
