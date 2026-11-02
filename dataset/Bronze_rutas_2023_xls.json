@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "bronze/xls"
+			"name": "Bronze/xls"
 		},
 		"annotations": [],
 		"type": "Excel",
