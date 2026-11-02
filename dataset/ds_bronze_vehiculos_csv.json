@@ -24,23 +24,19 @@
 		},
 		"schema": [
 			{
-				"name": "nro_parada",
+				"name": "nro_bus",
 				"type": "String"
 			},
 			{
-				"name": "nombre_parada",
+				"name": "placa",
 				"type": "String"
 			},
 			{
-				"name": "zona",
+				"name": "tipo_bus",
 				"type": "String"
 			},
 			{
-				"name": "latitud",
-				"type": "String"
-			},
-			{
-				"name": "longitud",
+				"name": "capacidad",
 				"type": "String"
 			},
 			{

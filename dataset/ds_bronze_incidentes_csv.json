@@ -24,35 +24,47 @@
 		},
 		"schema": [
 			{
-				"name": "nro_parada",
+				"name": "id_incidente",
 				"type": "String"
 			},
 			{
-				"name": "nombre_parada",
+				"name": "tipo",
 				"type": "String"
 			},
 			{
-				"name": "zona",
+				"name": "severidad",
 				"type": "String"
 			},
 			{
-				"name": "latitud",
+				"name": "fecha_inicio",
 				"type": "String"
 			},
 			{
-				"name": "longitud",
+				"name": "hora_inicio",
 				"type": "String"
 			},
 			{
-				"name": "fecha_desde",
+				"name": "fecha_fin",
 				"type": "String"
 			},
 			{
-				"name": "fecha_hasta",
+				"name": "hora_fin",
 				"type": "String"
 			},
 			{
-				"name": "estado",
+				"name": "fecha_registro",
+				"type": "String"
+			},
+			{
+				"name": "rutas_afectadas",
+				"type": "String"
+			},
+			{
+				"name": "vehiculo_afectado",
+				"type": "String"
+			},
+			{
+				"name": "descripcion",
 				"type": "String"
 			}
 		]
