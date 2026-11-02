@@ -13,19 +13,20 @@
 		"schema": [
 			{
 				"name": "AnioFuente",
-				"type": "varchar"
+				"type": "smallint",
+				"precision": 5
 			},
 			{
 				"name": "IncidenteId",
-				"type": "varchar"
+				"type": "nvarchar"
 			},
 			{
 				"name": "RutaHistoricaId",
-				"type": "varchar"
+				"type": "nvarchar"
 			},
 			{
 				"name": "EsPrincipal",
-				"type": "varchar"
+				"type": "bit"
 			}
 		],
 		"typeProperties": {
