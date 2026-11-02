@@ -1,0 +1,62 @@
+{
+	"name": "df_bronze_incidentesRutas",
+	"properties": {
+		"folder": {
+			"name": "Bronze"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Bronze_dincidenteRuta_sql",
+						"type": "DatasetReference"
+					},
+					"name": "sql"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dw_bronze_incidentesRutas",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          AnioFuente as integer,",
+				"          IncidenteId as string,",
+				"          RutaHistoricaId as string,",
+				"          EsPrincipal as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sql",
+				"sql sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          AnioFuente as string,",
+				"          IncidenteId as string,",
+				"          RutaHistoricaId as string,",
+				"          EsPrincipal as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          IncidenteId,",
+				"          RutaHistoricaId",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
