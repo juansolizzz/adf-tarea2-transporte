@@ -1,5 +1,5 @@
 {
-	"name": "ls_dl_transporte",
+	"name": "sa_transporte",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
