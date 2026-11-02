@@ -2,8 +2,11 @@
 	"name": "Bronze_paradas_sql",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_sql_transporte",
+			"referenceName": "sql_erp_transporte",
 			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
