@@ -1,5 +1,5 @@
 {
-	"name": "ls_sql_transporte",
+	"name": "sql_erp_transporte",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
