@@ -2,7 +2,7 @@
 	"name": "ds_bronze_paradas_csv",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_dl_transporte",
+			"referenceName": "sa_transporte",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {

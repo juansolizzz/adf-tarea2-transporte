@@ -1,6 +1,10 @@
 {
 	"name": "ds_bronze_demanda_paradas_csv",
 	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sa_transporte",
+			"type": "LinkedServiceReference"
+		},
 		"folder": {
 			"name": "bronze/csv"
 		},

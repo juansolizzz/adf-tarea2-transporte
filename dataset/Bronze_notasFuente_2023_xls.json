@@ -2,7 +2,7 @@
 	"name": "Bronze_notasFuente_2023_xls",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_dl_transporte",
+			"referenceName": "sa_transporte",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -11,7 +11,6 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Notas_fuente",
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "operacion_2023.xlsx",

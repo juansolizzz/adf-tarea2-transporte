@@ -2,7 +2,7 @@
 	"name": "Bronze_vehiculos_2022_xls",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_dl_transporte",
+			"referenceName": "sa_transporte",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -11,7 +11,6 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Vehiculos",
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "operacion_2022.xlsx",
