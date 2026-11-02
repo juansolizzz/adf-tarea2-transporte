@@ -7,43 +7,43 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "adf-ucb-transporte-us-12713688"
 		},
-		"ls_dl_transporte_accountKey": {
+		"sa_transporte_accountKey": {
 			"type": "secureString",
-			"metadata": "Cadena protegida para \"accountKey\"de \"ls_dl_transporte\""
+			"metadata": "Cadena protegida para \"accountKey\"de \"sa_transporte\""
 		},
-		"ls_dw_transporte_password": {
+		"sql_dw_transporte_password": {
 			"type": "secureString",
-			"metadata": "Cadena protegida para \"password\"de \"ls_dw_transporte\""
+			"metadata": "Cadena protegida para \"password\"de \"sql_dw_transporte\""
 		},
-		"ls_sql_transporte_password": {
+		"sql_erp_transporte_password": {
 			"type": "secureString",
-			"metadata": "Cadena protegida para \"password\"de \"ls_sql_transporte\""
+			"metadata": "Cadena protegida para \"password\"de \"sql_erp_transporte\""
 		},
-		"ls_dl_transporte_properties_typeProperties_url": {
+		"sa_transporte_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://saucbtransporte92841736.dfs.core.windows.net/"
 		},
-		"ls_dw_transporte_properties_typeProperties_server": {
+		"sql_dw_transporte_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "sql-ucb-server-transporte-92841736.database.windows.net"
 		},
-		"ls_dw_transporte_properties_typeProperties_database": {
+		"sql_dw_transporte_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "dw_transporte"
 		},
-		"ls_dw_transporte_properties_typeProperties_userName": {
+		"sql_dw_transporte_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "juansoliz"
 		},
-		"ls_sql_transporte_properties_typeProperties_server": {
+		"sql_erp_transporte_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "sql-ucb-server-transporte-92841736.database.windows.net"
 		},
-		"ls_sql_transporte_properties_typeProperties_database": {
+		"sql_erp_transporte_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "erp_transporte_db"
 		},
-		"ls_sql_transporte_properties_typeProperties_userName": {
+		"sql_erp_transporte_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "juansoliz"
 		},
@@ -74,39 +74,59 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"ls_dl_transporte_accountKey": {
-						"value": "[parameters('ls_dl_transporte_accountKey')]"
+					"sa_transporte_accountKey": {
+						"value": "[parameters('sa_transporte_accountKey')]"
 					},
-					"ls_dw_transporte_password": {
-						"value": "[parameters('ls_dw_transporte_password')]"
+					"sql_dw_transporte_password": {
+						"value": "[parameters('sql_dw_transporte_password')]"
 					},
-					"ls_sql_transporte_password": {
-						"value": "[parameters('ls_sql_transporte_password')]"
+					"sql_erp_transporte_password": {
+						"value": "[parameters('sql_erp_transporte_password')]"
 					},
-					"ls_dl_transporte_properties_typeProperties_url": {
-						"value": "[parameters('ls_dl_transporte_properties_typeProperties_url')]"
+					"sa_transporte_properties_typeProperties_url": {
+						"value": "[parameters('sa_transporte_properties_typeProperties_url')]"
 					},
-					"ls_dw_transporte_properties_typeProperties_server": {
-						"value": "[parameters('ls_dw_transporte_properties_typeProperties_server')]"
+					"sql_dw_transporte_properties_typeProperties_server": {
+						"value": "[parameters('sql_dw_transporte_properties_typeProperties_server')]"
 					},
-					"ls_dw_transporte_properties_typeProperties_database": {
-						"value": "[parameters('ls_dw_transporte_properties_typeProperties_database')]"
+					"sql_dw_transporte_properties_typeProperties_database": {
+						"value": "[parameters('sql_dw_transporte_properties_typeProperties_database')]"
 					},
-					"ls_dw_transporte_properties_typeProperties_userName": {
-						"value": "[parameters('ls_dw_transporte_properties_typeProperties_userName')]"
+					"sql_dw_transporte_properties_typeProperties_userName": {
+						"value": "[parameters('sql_dw_transporte_properties_typeProperties_userName')]"
 					},
-					"ls_sql_transporte_properties_typeProperties_server": {
-						"value": "[parameters('ls_sql_transporte_properties_typeProperties_server')]"
+					"sql_erp_transporte_properties_typeProperties_server": {
+						"value": "[parameters('sql_erp_transporte_properties_typeProperties_server')]"
 					},
-					"ls_sql_transporte_properties_typeProperties_database": {
-						"value": "[parameters('ls_sql_transporte_properties_typeProperties_database')]"
+					"sql_erp_transporte_properties_typeProperties_database": {
+						"value": "[parameters('sql_erp_transporte_properties_typeProperties_database')]"
 					},
-					"ls_sql_transporte_properties_typeProperties_userName": {
-						"value": "[parameters('ls_sql_transporte_properties_typeProperties_userName')]"
+					"sql_erp_transporte_properties_typeProperties_userName": {
+						"value": "[parameters('sql_erp_transporte_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adf-ucb-transporte-us-12713688_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-ucb-transporte-us-12713688_ArmTemplate_0')]"
+			]
 		}
 	]
 }
