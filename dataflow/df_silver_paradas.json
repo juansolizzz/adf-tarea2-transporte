@@ -15,7 +15,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dw_silver_paradas_sql",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "select1"
@@ -69,7 +77,53 @@
 				"    toDecimal(null()),\r",
 				"    toDecimal(trim(Longitud))\r",
 				"),",
-				"          Estado = upper(trim(coalesce(Estado, '')))) ~> derivedColumn2"
+				"          Estado = upper(trim(coalesce(Estado, ''))),",
+				"          VigenciaDesde = iif(\r",
+				"    length(trim(VigenciaDesde)) < 6, \r",
+				"    addDays(toDate('1899-12-30', 'yyyy-MM-dd'), toInteger(trim(VigenciaDesde))), \r",
+				"    toDate(trim(VigenciaDesde), 'yyyy-MM-dd')\r",
+				"),",
+				"          VigenciaHasta = iif(\r",
+				"    trim(coalesce(VigenciaHasta, '')) == '',\r",
+				"    toDate(null()),\r",
+				"    iif(\r",
+				"        regexMatch(trim(VigenciaHasta), '^[0-9]+$'),\r",
+				"        addDays(toDate('1899-12-30', 'yyyy-MM-dd'), toInteger(trim(VigenciaHasta))),\r",
+				"        toDate(substring(trim(VigenciaHasta), 1, 10), 'yyyy-MM-dd')\r",
+				"    )\r",
+				")) ~> derivedColumn2",
+				"derivedColumn2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          AnioFuente as integer,",
+				"          ParadaHistoricaId as string,",
+				"          CodigoPublicado as string,",
+				"          NombreParada as string,",
+				"          Zona as string,",
+				"          Latitud as decimal(9,6),",
+				"          Longitud as decimal(9,6),",
+				"          VigenciaDesde as date,",
+				"          VigenciaHasta as date,",
+				"          Estado as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          ParadaHistoricaId,",
+				"          NombreParada,",
+				"          Zona,",
+				"          Latitud,",
+				"          Longitud,",
+				"          VigenciaDesde,",
+				"          VigenciaHasta,",
+				"          Estado",
+				"     )) ~> sink1"
 			]
 		}
 	}
