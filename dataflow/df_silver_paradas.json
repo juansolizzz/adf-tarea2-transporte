@@ -1,0 +1,76 @@
+{
+	"name": "df_silver_paradas",
+	"properties": {
+		"folder": {
+			"name": "Silver"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dw_bronze_paradas",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          AnioFuente as string,",
+				"          ParadaHistoricaId as string,",
+				"          CodigoPublicado as string,",
+				"          NombreParada as string,",
+				"          Zona as string,",
+				"          Latitud as string,",
+				"          Longitud as string,",
+				"          VigenciaDesde as string,",
+				"          VigenciaHasta as string,",
+				"          Estado as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source1 select(mapColumn(",
+				"          ParadaHistoricaId,",
+				"          NombreParada,",
+				"          Zona,",
+				"          Latitud,",
+				"          Longitud,",
+				"          VigenciaDesde,",
+				"          VigenciaHasta,",
+				"          Estado",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(ParadaHistoricaId = upper(trim(coalesce(ParadaHistoricaId, ''))),",
+				"          NombreParada = trim(coalesce(NombreParada, '')),",
+				"          Zona = upper(trim(coalesce(Zona, '')))) ~> derivedColumn1",
+				"derivedColumn1 derive(Latitud = iif(\r",
+				"    trim(coalesce(Latitud, '')) == '',\r",
+				"    toDecimal(null()),\r",
+				"    toDecimal(trim(Latitud))\r",
+				"),",
+				"          Longitud = iif(\r",
+				"    trim(coalesce(Longitud, '')) == '',\r",
+				"    toDecimal(null()),\r",
+				"    toDecimal(trim(Longitud))\r",
+				"),",
+				"          Estado = upper(trim(coalesce(Estado, '')))) ~> derivedColumn2"
+			]
+		}
+	}
+}
